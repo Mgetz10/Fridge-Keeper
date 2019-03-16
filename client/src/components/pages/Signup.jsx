@@ -37,29 +37,29 @@ export default class Signup extends Component {
       <div className="Signup">
         <h2>Signup</h2>
         <form>
-          Username:{' '}
+          Username:
           <input
             type="text"
             value={this.state.username}
             name="username"
             onChange={this.handleInputChange}
-          />{' '}
+          />
           <br />
-          Name:{' '}
+          Name:
           <input
             type="text"
             value={this.state.name}
             name="name"
             onChange={this.handleInputChange}
-          />{' '}
+          />
           <br />
-          Password:{' '}
+          Password:
           <input
             type="password"
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
-          />{' '}
+          />
           <br />
           <button onClick={e => this.handleClick(e)}>Signup</button>
         </form>

@@ -1,73 +1,71 @@
 import React, { Component } from 'react';
+import api from '../api';
 
-class AddMovie extends Component {
+class AddIngredient extends Component {
+  //   name: String,
+  //   expdate: Date,
+  //   daysleft: Number,
+  //   image: String,
+  //   fridge_id: String
   state = {
-    title: '',
-    director: '',
-    hasOscars: false,
-    IMDbRating: ''
+    name: '',
+    expdate: {}
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.props.addTheMovie(this.state);
+  handleInputChange = event => {
     this.setState({
-      title: '',
-      director: '',
-      hasOscars: false,
-      IMDbRating: ''
+      [event.target.name]: event.target.value
     });
   };
 
-  handleChange(event) {
-    let { name, value } = event.target;
-    if (name === 'hasOscars' && value === 'on') {
-      value = true;
-    }
-    this.setState({ [name]: value });
+  handleClick(e) {
+    e.preventDefault();
+    const currentDate = new Date(Date.now());
+    const expdate = new Date(this.state.expdate.split(' ')[0]);
+    let data = {
+      name: this.state.name,
+      expdate: expdate,
+      daysleft: Math.floor((expdate - currentDate) / (1000 * 60 * 60 * 24)),
+      fridge: this.props.fridge._id
+    };
+    api
+      .addIngredient(data)
+      .then(result => {
+        console.log('SUCCESS!');
+        this.props.history.push('/'); // Redirect to the home page
+      })
+      .catch(err => this.setState({ message: err.toString() }));
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Title:</label>
+      <div className="Add-Ingredient">
+        <h2>Add Ingredient</h2>
+        <form>
+          Name:
           <input
             type="text"
-            name="title"
-            value={this.state.title}
-            onChange={e => this.handleChange(e)}
+            value={this.state.name}
+            name="name"
+            onChange={this.handleInputChange}
           />
-
-          <label>Director:</label>
+          <br />
+          Expiration Date:
           <input
-            type="text"
-            name="director"
-            value={this.state.director}
-            onChange={e => this.handleChange(e)}
+            type="date"
+            value={this.state.expdate}
+            name="expdate"
+            onChange={this.handleInputChange}
           />
-
-          <label>Oscar Awarded:</label>
-          <input
-            type="checkbox"
-            name="hasOscars"
-            checked={this.state.hasOscars}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>IMDb Rating:</label>
-          <input
-            type="text"
-            name="IMDbRating"
-            value={this.state.IMDbRating}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <input type="submit" value="Submit" />
+          <br />
+          <button onClick={e => this.handleClick(e)}>Add Ingredient</button>
         </form>
+        {this.state.message && (
+          <div className="info info-danger">{this.state.message}</div>
+        )}
       </div>
     );
   }
 }
 
-export default AddMovie;
+export default AddIngredient;

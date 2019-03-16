@@ -1,25 +1,14 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import api from '../../api';
-// import { Redirect } from 'react-router-dom';
+import AddIngredient from '../AddIngredient';
+
 export default class Home extends Component {
-  componentDidMount() {
-    // console.log(api.isLoggedIn());
-    // console.log(api.getLocalStorageUser());
-    // console.log(this);
-
-    Axios.get('http://localhost:5000/api/whatever').then(res => {
-      // console.log(res);
-    });
-  }
-
   render() {
     return (
       <div className="Home">
-        {/* <Redirect to="/monkey" /> */}
-
+        {/* {console.log('LOOK HERE  ', this.props)} */}
         <h2>Fridge</h2>
         <p>This is where the ingredients will go</p>
+        <AddIngredient fridge={this.props.fridge} />
       </div>
     );
   }

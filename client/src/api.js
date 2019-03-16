@@ -62,8 +62,28 @@ export default {
   logout() {
     localStorage.removeItem('user');
     return service.get('/logout');
-  }
+  },
 
+  getFridge() {
+    return service
+      .get('/getfridge')
+      .then(fridge => {
+        console.log(fridge.data.fridge);
+        return fridge.data.fridge;
+      })
+      .catch(err => console.log(err));
+  },
+
+  addIngredient(ingredientInfo) {
+    return service
+      .post('/addingredient', ingredientInfo)
+      .then(res => {
+        // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
+        // localStorage.setItem('user', JSON.stringify(res.data));
+        return res.data;
+      })
+      .catch(errHandler);
+  }
   // This is an example on how to use this method in a different file
   // api.getCountries().then(countries => { /* ... */ })
 };

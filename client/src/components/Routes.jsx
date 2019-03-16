@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './pages/Fridge';
+import Fridge from './pages/Fridge';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
@@ -8,13 +8,15 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
+        {/* {console.log('LOOK HERE  ', this.props)} */}
         <Route
           exact
           path="/"
           render={props => (
-            <Home
+            <Fridge
               {...props}
               user={this.props.user}
+              fridge={this.props.fridge}
               setUser={this.props.setUser}
             />
           )}

@@ -10,18 +10,27 @@ import Routes from './components/Routes';
 
 export default class App extends Component {
   state = {
-    user: {}
+    user: {},
+    fridge: {}
   };
 
   componentDidMount() {
     this.setUser();
   }
 
-  setUser = () => {
+  setUser = async () => {
     if (api.isLoggedIn()) {
-      this.setState({ user: api.getLocalStorageUser() });
+      this.setState({
+        user: api.getLocalStorageUser(),
+        fridge: await api.getFridge().then(res => {
+          return res;
+        })
+      });
     } else {
-      this.setState({ user: {} });
+      this.setState({
+        user: {},
+        fridge: {}
+      });
     }
   };
 
@@ -29,7 +38,11 @@ export default class App extends Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} />
-        <Routes user={this.state.user} setUser={this.setUser} />
+        <Routes
+          user={this.state.user}
+          fridge={this.state.fridge}
+          setUser={this.setUser}
+        />
       </div>
     );
   }
