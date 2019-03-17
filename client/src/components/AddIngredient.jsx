@@ -35,6 +35,7 @@ class AddIngredient extends Component {
         this.props.history.push('/'); // Redirect to the home page
       })
       .catch(err => this.setState({ message: err.toString() }));
+    this.props.setIngredients();
   }
   render() {
     return (

@@ -1,15 +1,36 @@
 import React, { Component } from 'react';
 import AddIngredient from '../AddIngredient';
 import Ingredients from '../Ingredients';
+import api from '../../api';
 
 class Fridge extends Component {
   state = {
-    showForm: false
+    showForm: false,
+    ingredients: []
   };
+
+  componentDidUpdate() {
+    if (this.state.ingredients.length === 0) {
+      this.setIngredients();
+    }
+  }
+
   handleToggleClick = () => {
     this.setState(prevState => ({
       showForm: !prevState.showForm
     }));
+  };
+
+  setIngredients = () => {
+    console.log('is this OK    ', this.props.fridge._id);
+
+    let fridgeID = { fridgeID: this.props.fridge._id };
+    api.getIngredients(fridgeID).then(gotIngredients => {
+      console.log('did it work?', gotIngredients);
+      this.setState({
+        ingredients: gotIngredients
+      });
+    });
   };
   render() {
     return (
@@ -17,12 +38,18 @@ class Fridge extends Component {
         {/* {console.log('LOOK HERE  ', this.props)} */}
         <h2>Fridge</h2>
         {console.log('HEY  ', this.props.fridge)}
-        <Ingredients fridge={this.props.fridge} />
+        <Ingredients
+          fridge={this.props.fridge}
+          setIngredients={this.setIngredients}
+        />
         <button onClick={this.handleToggleClick}>
           {!this.state.showForm ? 'Add Ingredient' : 'Hide'}
         </button>
         {this.state.showForm ? (
-          <AddIngredient fridge={this.props.fridge} />
+          <AddIngredient
+            fridge={this.props.fridge}
+            setIngredients={this.setIngredients}
+          />
         ) : null}
       </div>
     );
