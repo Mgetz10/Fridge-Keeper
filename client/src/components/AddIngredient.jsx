@@ -36,7 +36,6 @@ class AddIngredient extends Component {
       })
       .catch(err => this.setState({ message: err.toString() }));
   }
-
   render() {
     return (
       <div className="Add-Ingredient">
@@ -49,7 +48,6 @@ class AddIngredient extends Component {
             name="name"
             onChange={this.handleInputChange}
           />
-          <br />
           Expiration Date:
           <input
             type="date"
@@ -57,7 +55,6 @@ class AddIngredient extends Component {
             name="expdate"
             onChange={this.handleInputChange}
           />
-          <br />
           <button onClick={e => this.handleClick(e)}>Add Ingredient</button>
         </form>
         {this.state.message && (

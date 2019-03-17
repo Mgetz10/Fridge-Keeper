@@ -32,4 +32,12 @@ router.post('/addingredient', (req, res, next) => {
   });
 });
 
+router.post('/getingredients', (req, res, next) => {
+  console.log('BBBBBBBB  ', req.body);
+  Ingredient.find({ fridge: req.body.fridgeID }).then(ingredients => {
+    console.log('WOWOWOWOWOW:   ', ingredients);
+    // res.json(ingredientObject);
+  });
+});
+
 module.exports = router;

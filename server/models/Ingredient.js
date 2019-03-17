@@ -7,7 +7,7 @@ const ingredientSchema = new Schema(
     expdate: Date,
     daysleft: Number,
     image: String,
-    fridge_id: String
+    fridge: String
   },
   {
     timestamps: {

@@ -83,6 +83,17 @@ export default {
         return res.data;
       })
       .catch(errHandler);
+  },
+
+  getIngredients(fridgeID) {
+    console.log('check ME out  ', fridgeID);
+    return service
+      .post('/getingredients', fridgeID)
+      .then(res => {
+        console.log('LOOK AT ME   ', res.data);
+        return res.data;
+      })
+      .catch(err => console.log(err));
   }
   // This is an example on how to use this method in a different file
   // api.getCountries().then(countries => { /* ... */ })
