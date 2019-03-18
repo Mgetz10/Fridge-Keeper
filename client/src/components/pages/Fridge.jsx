@@ -26,7 +26,7 @@ class Fridge extends Component {
 
     let fridgeID = { fridgeID: this.props.fridge._id };
     api.getIngredients(fridgeID).then(gotIngredients => {
-      console.log('did it work?', gotIngredients);
+      // console.log('did it work?', gotIngredients);
       this.setState({
         ingredients: gotIngredients
       });
@@ -37,7 +37,7 @@ class Fridge extends Component {
       <div className="Fridge">
         {/* {console.log('LOOK HERE  ', this.props)} */}
         <h2>Fridge</h2>
-        {console.log('HEY  ', this.props.fridge)}
+        {/* {console.log('HEY  ', this.props.fridge)} */}
         <Ingredients
           fridge={this.props.fridge}
           ingredients={this.state.ingredients}
