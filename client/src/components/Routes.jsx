@@ -4,6 +4,7 @@ import Fridge from './pages/Fridge';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Recipes from './Recipes';
+import MoreIngredients from './MoreIngredients';
 
 class Routes extends Component {
   render() {
@@ -31,6 +32,8 @@ class Routes extends Component {
           render={props => <Login {...props} setUser={this.props.setUser} />}
         />
         <Route exact path="/recipes/:ingredient" component={Recipes} />
+        <Route exact path="/sup/sup/bro" component={MoreIngredients} />
+
         <Route render={() => <h2>404</h2>} />
       </Switch>
     );

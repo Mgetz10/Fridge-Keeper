@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MoreIngredients from './MoreIngredients';
 import axios from 'axios';
 
 let baseURL = 'http://api.yummly.com/v1/api/recipes?';
@@ -45,7 +46,10 @@ class Recipes extends Component {
   render() {
     return (
       <div className="Recipes">
-        {/* {console.log('WTF', this.state.recipes)} */}
+        <MoreIngredients
+          ingredients={this.props.location.state}
+          lastSearch={this.ingredient}
+        />
         {this.state.recipes.map((oneRecipe, index) => {
           return (
             <a href={oneRecipe.source.sourceRecipeUrl} key={index}>

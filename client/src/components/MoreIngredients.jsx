@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Ingredients extends Component {
+class MoreIngredients extends Component {
   render() {
+    console.log(this);
     return (
-      <div className="Ingredients">
-        test
+      <div className="MoreIngredients flex">
         {this.props.ingredients.map((oneIngredient, index) => {
           return (
-            <div key={index}>
+            <div className="MoreIngredientsRecipesContainer" key={index}>
               <Link
-                probably="propb"
                 to={{
                   pathname: `/recipes/${oneIngredient.name
                     .split(' ')
-                    .join('+')}`,
+                    .join('+')}+${this.props.lastSearch}`,
                   state: this.props.ingredients
                 }}
               >
@@ -23,9 +22,10 @@ class Ingredients extends Component {
             </div>
           );
         })}
+        {console.log('more ingredients', this.props)}
       </div>
     );
   }
 }
 
-export default Ingredients;
+export default MoreIngredients;
