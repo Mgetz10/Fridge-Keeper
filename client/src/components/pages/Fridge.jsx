@@ -40,6 +40,7 @@ class Fridge extends Component {
         {console.log('HEY  ', this.props.fridge)}
         <Ingredients
           fridge={this.props.fridge}
+          ingredients={this.state.ingredients}
           setIngredients={this.setIngredients}
         />
         <button onClick={this.handleToggleClick}>

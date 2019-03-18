@@ -68,7 +68,7 @@ export default {
     return service
       .get('/getfridge')
       .then(fridge => {
-        console.log(fridge.data.fridge);
+        // console.log(fridge.data.fridge);
         return fridge.data.fridge;
       })
       .catch(err => console.log(err));
