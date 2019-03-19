@@ -4,7 +4,6 @@ import Fridge from './pages/Fridge';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Recipes from './Recipes';
-import MoreIngredients from './MoreIngredients';
 
 class Routes extends Component {
   render() {

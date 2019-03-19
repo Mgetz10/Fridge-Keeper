@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Ingredients from './Ingredients';
 
 class MoreIngredients extends Component {
+  // state = {
+  //   ingredientsToSearch: lastIngredients
+  // };
+
   render() {
-    // console.log(this);
+    let lastIngredients = this.props.match.params.ingredient.split('+');
     return (
       <div className="MoreIngredients flex">
         {this.props.ingredients.map((oneIngredient, index) => {
@@ -11,9 +16,9 @@ class MoreIngredients extends Component {
             <div className="MoreIngredientsRecipesContainer" key={index}>
               <Link
                 to={{
-                  pathname: `/recipes/${oneIngredient.name
-                    .split(' ')
-                    .join('+')}+${this.props.lastSearch}`,
+                  pathname: `/recipes/${lastIngredients.join(
+                    '+'
+                  )}+${oneIngredient.name.split(' ').join('+')}`,
                   state: this.props.ingredients
                 }}
               >

@@ -7,6 +7,10 @@ import React, { Component } from 'react';
 import api from './api';
 import Navbar from './components/Navbar';
 import Routes from './components/Routes';
+//('dotenv').config();
+// import dotenv from 'dotenv';
+// dotenv.config();
+console.log('hi', process.env);
 
 export default class App extends Component {
   state = {

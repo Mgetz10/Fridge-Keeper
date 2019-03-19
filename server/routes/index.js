@@ -11,7 +11,6 @@ router.get('/whatever', (req, res, next) => {
 
 router.get('/getfridge', (req, res, next) => {
   Fridge.find({ user_id: req.user._id }).then(fridge => {
-    console.log('WOWOWOWOWOW:   ', fridge[0]);
     res.json({ fridge: fridge[0] });
   });
 });
@@ -25,7 +24,6 @@ router.post('/addingredient', (req, res, next) => {
   const newIngredient = new Ingredient({ name, expdate, daysleft, fridge });
   newIngredient.save().then(ingredientSaved => {
     Fridge.findById(fridge).then(fridgeToPush => {
-      console.log('OKOKOKOKOKOK:   ', fridgeToPush);
       fridgeToPush.ingredients.push(ingredientSaved._id);
       fridgeToPush.save();
     });
@@ -33,10 +31,18 @@ router.post('/addingredient', (req, res, next) => {
 });
 
 router.post('/getingredients', (req, res, next) => {
-  console.log('BBBBBBBB  ', req.body);
   Ingredient.find({ fridge: req.body.fridgeID }).then(ingredients => {
-    console.log('WOWOWOWOWOW:   ', ingredients);
     res.send(ingredients);
+  });
+});
+
+router.post('/delete-ingredient', (req, res, next) => {
+  Fridge.findOneAndUpdate(
+    { _id: req.body.fridge },
+    { $pull: { ingredients: req.body._id } },
+    { new: true }
+  ).then(() => {
+    Ingredient.findByIdAndDelete({ _id: req.body._id }).then(result => {});
   });
 });
 

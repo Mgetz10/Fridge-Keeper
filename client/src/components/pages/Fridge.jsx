@@ -1,3 +1,13 @@
+/* TODO
+-> remove ingredients
+-> remove 'more ingredients'
+-> add selectable list
+ -> create json file for available lists
+-> add pictures
+ -> change database for pictures
+-> add fridge css
+ */
+
 import React, { Component } from 'react';
 import AddIngredient from '../AddIngredient';
 import Ingredients from '../Ingredients';
