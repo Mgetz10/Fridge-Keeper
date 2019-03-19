@@ -14,11 +14,6 @@ console.log(process.env.REACT_APP_API_KEY);
 class Recipes extends Component {
   state = {
     recipes: [],
-    // ingredient: this.props.match.params.ingredient,
-    // search:
-    //   '&q=' +
-    //   this.state.ingredient +
-    //   '&requirePictures=true&maxResult=20&start=10',
     yummlyQuery:
       searchURL +
       '&q=' +

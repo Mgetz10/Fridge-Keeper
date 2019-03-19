@@ -3,13 +3,9 @@ import { Link } from 'react-router-dom';
 import api from '../api';
 
 class Ingredients extends Component {
-  deleteIngredient = ingredient => {
-    api.deleteIngredient(ingredient);
-  };
   render() {
     return (
       <div className="Ingredients">
-        test
         {this.props.ingredients.map((oneIngredient, index) => {
           return (
             <div key={index}>
@@ -26,7 +22,7 @@ class Ingredients extends Component {
                 </Link>
                 <span
                   onClick={() => {
-                    this.deleteIngredient(oneIngredient);
+                    this.props.deleteIngredient(oneIngredient);
                   }}
                 >
                   ×

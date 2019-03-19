@@ -1,5 +1,4 @@
 /* TODO
--> remove ingredients
 -> remove 'more ingredients'
 -> add selectable list
  -> create json file for available lists
@@ -16,11 +15,18 @@ import api from '../../api';
 class Fridge extends Component {
   state = {
     showForm: false,
-    ingredients: []
+    ingredients: [],
+    didSearch: false
   };
 
+  componentDidMount() {
+    console.log(this.props.fridge._id);
+    this.setIngredients();
+  }
+
   componentDidUpdate() {
-    if (this.state.ingredients.length === 0) {
+    console.log(this.state.didSearch);
+    if (!this.state.didSearch) {
       this.setIngredients();
     }
   }
@@ -31,12 +37,17 @@ class Fridge extends Component {
     }));
   };
 
-  setIngredients = () => {
-    console.log('is this OK    ', this.props.fridge._id);
+  deleteIngredient = ingredient => {
+    api.deleteIngredient(ingredient).then(res => {
+      console.log(4, res);
+      this.setIngredients();
+    });
+  };
 
+  setIngredients = () => {
     let fridgeID = { fridgeID: this.props.fridge._id };
     api.getIngredients(fridgeID).then(gotIngredients => {
-      // console.log('did it work?', gotIngredients);
+      this.setState({ didSearch: true });
       this.setState({
         ingredients: gotIngredients
       });
@@ -45,11 +56,10 @@ class Fridge extends Component {
   render() {
     return (
       <div className="Fridge">
-        {/* {console.log('LOOK HERE  ', this.props)} */}
         <h2>Fridge</h2>
-        {/* {console.log('HEY  ', this.props.fridge)} */}
         <Ingredients
           fridge={this.props.fridge}
+          deleteIngredient={this.deleteIngredient}
           ingredients={this.state.ingredients}
           setIngredients={this.setIngredients}
         />

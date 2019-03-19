@@ -9,7 +9,6 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        {/* {console.log('LOOK HERE  ', this.props)} */}
         <Route
           exact
           path="/"

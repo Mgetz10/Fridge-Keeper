@@ -101,9 +101,8 @@ export default {
     return service
       .post('/delete-ingredient', ingredient)
       .then(res => {
-        // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
-        // localStorage.setItem('user', JSON.stringify(res.data));
-        // return res.data;
+        console.log(3, res);
+        return res.data;
       })
       .catch(errHandler);
   }

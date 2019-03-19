@@ -42,7 +42,13 @@ router.post('/delete-ingredient', (req, res, next) => {
     { $pull: { ingredients: req.body._id } },
     { new: true }
   ).then(() => {
-    Ingredient.findByIdAndDelete({ _id: req.body._id }).then(result => {});
+    console.log(1);
+    return Ingredient.findByIdAndDelete({ _id: req.body._id }).then(
+      response => {
+        console.log(2);
+        res.json({ itsallgoingdown: true });
+      }
+    );
   });
 });
 

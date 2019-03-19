@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-// import { Route, Switch } from 'react-router-dom';
-// import Home from './components/pages/Home';
-
-// import Login from './components/pages/Login';
-// import Signup from './components/pages/Signup';
 import api from './api';
 import Navbar from './components/Navbar';
 import Routes from './components/Routes';
-//('dotenv').config();
-// import dotenv from 'dotenv';
-// dotenv.config();
-console.log('hi', process.env);
 
 export default class App extends Component {
   state = {
