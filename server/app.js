@@ -39,7 +39,7 @@ app.use(cookieParser());
 
 // Set the public folder to "~/client/build/"
 // Example: http://localhost:5000/favicon.ico => Display "~/client/build/favicon.ico"
-//app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Enable authentication using session + passport
 app.use(
@@ -64,10 +64,7 @@ app.use('/api/*', (req, res, next) => {
 
 // For any other routes, redirect to the index.html file of React
 app.get('*', (req, res) => {
-  console.log('mac');
-  // res.json({ mac: 'miller' });
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  //res.send('idk');
 });
 
 // Error handler
