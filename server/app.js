@@ -65,8 +65,8 @@ app.use('/api/*', (req, res, next) => {
 // For any other routes, redirect to the index.html file of React
 app.get('*', (req, res) => {
   console.log('mac');
-  res.json({ mac: 'miller' });
-  //res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  // res.json({ mac: 'miller' });
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
   //res.send('idk');
 });
 
