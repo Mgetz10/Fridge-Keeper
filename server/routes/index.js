@@ -23,16 +23,20 @@ router.post('/addingredient', (req, res, next) => {
   }
   const newIngredient = new Ingredient({ name, expdate, daysleft, fridge });
   newIngredient.save().then(ingredientSaved => {
-    Fridge.findById(fridge).then(fridgeToPush => {
-      fridgeToPush.ingredients.push(ingredientSaved._id);
-      fridgeToPush.save();
+    Fridge.find({ user_id: req.user._id }).then(fridgeToPush => {
+      fridgeToPush[0].ingredients.push(ingredientSaved._id);
+      fridgeToPush[0].save();
+      return res.json({ itsallgoingdown: true });
     });
   });
 });
 
-router.post('/getingredients', (req, res, next) => {
-  Ingredient.find({ fridge: req.body.fridgeID }).then(ingredients => {
-    res.send(ingredients);
+router.get('/getingredients', (req, res, next) => {
+  Fridge.find({ user_id: req.user._id }).then(fridgeToOpen => {
+    Ingredient.find({ fridge: fridgeToOpen._id }).then(ingredients => {
+      console.log('me', ingredients);
+      res.send(ingredients);
+    });
   });
 });
 

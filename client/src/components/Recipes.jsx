@@ -3,6 +3,7 @@ import MoreIngredients from './MoreIngredients';
 import axios from 'axios';
 import Ingredients from './Ingredients';
 import history from 'react-router-dom';
+import api from '../api';
 
 let baseURL = 'http://api.yummly.com/v1/api/recipes?';
 let appID = '_app_id=' + process.env.REACT_APP_APP_ID;
@@ -13,39 +14,59 @@ console.log(process.env.REACT_APP_API_KEY);
 
 class Recipes extends Component {
   state = {
+    ingredients: [],
     recipes: [],
+    lastSearch: [this.props.location.state],
     yummlyQuery:
       searchURL +
       '&q=' +
-      this.props.match.params.ingredient +
+      this.props.location.state +
       '&requirePictures=true&maxResult=20&start=10'
   };
 
   componentWillReceiveProps(prevProps, nextProps) {
-    if (
-      prevProps.match.params.ingredient !== this.props.match.params.ingredient
-    ) {
-      console.log('will receive props', prevProps.match.params.ingredient);
-      this.setState(
-        {
-          yummlyQuery:
-            searchURL +
-            '&q=' +
-            prevProps.match.params.ingredient +
-            '&requirePictures=true&maxResult=20&start=10'
-        },
-        () => {
-          console.log(this.state.yummlyQuery, 'heyo');
-          this.callApi();
-        }
-      );
-    }
+    // if (
+    //   prevProps.match.params.ingredient !== this.props.match.params.ingredient
+    // ) {
+    //   console.log('will receive props', prevProps.match.params.ingredient);
+    //   this.setState(
+    //     {
+    //       yummlyQuery:
+    //         searchURL +
+    //         '&q=' +
+    //         prevProps.match.params.ingredient +
+    //         '&requirePictures=true&maxResult=20&start=10'
+    //     },
+    //     () => {
+    //       console.log(this.state.yummlyQuery, 'heyo');
+    //       this.callApi();
+    //     }
+    //   );
+    // }
   }
 
   componentDidMount() {
-    console.log('mounted', this.props.match.params.ingredient);
+    console.log('mounted', this.state.ingredients);
+    this.getIngredients();
     this.callApi();
   }
+
+  getIngredients = async () => {
+    this.setState({ ingredients: await api.getIngredients() });
+  };
+
+  addSearchIngredientHandler = newIngredient => {
+    let newSearchIngredients = this.state.lastSearch;
+    newSearchIngredients.push(newIngredient);
+    this.setState({
+      lastSearch: newSearchIngredients,
+      yummlyQuery:
+        searchURL +
+        '&q=' +
+        newSearchIngredients.join('+') +
+        '&requirePictures=true&maxResult=20&start=10'
+    });
+  };
 
   callApi = () => {
     // axios
@@ -72,19 +93,13 @@ class Recipes extends Component {
     //   });
   };
   render() {
+    console.log(this.state.ingredients);
     return (
       <div className="Recipes">
-        {/* <MoreIngredients
-          ingredients={
-            this.props.location.state ? this.props.location.state : []
-          }
-          lastSearch={this.state.ingredient}
-        /> */}
         <MoreIngredients
-          {...this.props}
-          ingredients={
-            this.props.location.state ? this.props.location.state : []
-          }
+          lastSearch={this.state.lastSearch}
+          addSearchIngredientHandler={this.addSearchIngredientHandler}
+          ingredients={this.state.ingredients ? this.state.ingredients : []}
         />
         {this.state.recipes.map((oneRecipe, index) => {
           return (

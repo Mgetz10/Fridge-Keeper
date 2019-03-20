@@ -4,6 +4,7 @@ import api from '../api';
 
 class Ingredients extends Component {
   render() {
+    // console.log(this.props.ingredients);
     return (
       <div className="Ingredients">
         {this.props.ingredients.map((oneIngredient, index) => {
@@ -12,10 +13,8 @@ class Ingredients extends Component {
               <div className="flex">
                 <Link
                   to={{
-                    pathname: `/recipes/${oneIngredient.name
-                      .split(' ')
-                      .join('+')}`,
-                    state: this.props.ingredients
+                    pathname: `/recipes`,
+                    state: oneIngredient.name.split(' ').join('+')
                   }}
                 >
                   <p>{oneIngredient.name}</p>

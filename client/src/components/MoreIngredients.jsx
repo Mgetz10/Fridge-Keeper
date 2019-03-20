@@ -8,25 +8,35 @@ class MoreIngredients extends Component {
   // };
 
   render() {
-    let lastIngredients = this.props.match.params.ingredient.split('+');
+    console.log(this.props);
+    // let lastIngredients = this.props.match.params.ingredient.split('+');
     return (
-      <div className="MoreIngredients flex">
-        {this.props.ingredients.map((oneIngredient, index) => {
-          return (
-            <div className="MoreIngredientsRecipesContainer" key={index}>
-              <Link
-                to={{
-                  pathname: `/recipes/${lastIngredients.join(
-                    '+'
-                  )}+${oneIngredient.name.split(' ').join('+')}`,
-                  state: this.props.ingredients
-                }}
-              >
-                <p>{oneIngredient.name}</p>
-              </Link>
-            </div>
-          );
-        })}
+      <div className="MoreIngredientsRecipesContainer">
+        <div className="MoreIngredients flex">
+          {this.props.ingredients.map((oneIngredient, index) => {
+            return (
+              <div key={index}>
+                <p
+                  onClick={() => {
+                    this.props.addSearchIngredientHandler(oneIngredient.name);
+                  }}
+                >
+                  {oneIngredient.name}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex">
+          {this.props.lastSearch.map((oneSearch, index) => {
+            return (
+              <div className="flex" key={index}>
+                <p>{oneSearch}</p>
+                <span>×</span>
+              </div>
+            );
+          })}
+        </div>
         {/* {console.log('more ingredients', this.props)} */}
       </div>
     );

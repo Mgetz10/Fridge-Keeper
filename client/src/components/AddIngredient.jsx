@@ -25,17 +25,15 @@ class AddIngredient extends Component {
     let data = {
       name: this.state.name,
       expdate: expdate,
-      daysleft: Math.floor((expdate - currentDate) / (1000 * 60 * 60 * 24)),
-      fridge: this.props.fridge._id
+      daysleft: Math.floor((expdate - currentDate) / (1000 * 60 * 60 * 24))
     };
     api
       .addIngredient(data)
       .then(result => {
-        console.log('SUCCESS!');
-        this.props.history.push('/'); // Redirect to the home page
+        console.log('SUCCESS!?');
+        this.props.getIngredients();
       })
       .catch(err => this.setState({ message: err.toString() }));
-    this.props.setIngredients();
   }
   render() {
     return (

@@ -5,8 +5,7 @@ import Routes from './components/Routes';
 
 export default class App extends Component {
   state = {
-    user: {},
-    fridge: {}
+    user: {}
   };
 
   componentDidMount() {
@@ -16,15 +15,11 @@ export default class App extends Component {
   setUser = async () => {
     if (api.isLoggedIn()) {
       this.setState({
-        user: api.getLocalStorageUser(),
-        fridge: await api.getFridge().then(res => {
-          return res;
-        })
+        user: api.getLocalStorageUser()
       });
     } else {
       this.setState({
-        user: {},
-        fridge: {}
+        user: {}
       });
     }
   };
@@ -33,11 +28,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} />
-        <Routes
-          user={this.state.user}
-          fridge={this.state.fridge}
-          setUser={this.setUser}
-        />
+        <Routes user={this.state.user} setUser={this.setUser} />
       </div>
     );
   }

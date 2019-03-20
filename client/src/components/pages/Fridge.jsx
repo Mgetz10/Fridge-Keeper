@@ -20,16 +20,15 @@ class Fridge extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.fridge._id);
-    this.setIngredients();
+    this.getIngredients();
   }
 
-  componentDidUpdate() {
-    console.log(this.state.didSearch);
-    if (!this.state.didSearch) {
-      this.setIngredients();
-    }
-  }
+  // componentDidUpdate() {
+  //   console.log(this.state.didSearch);
+  //   if (!this.state.didSearch) {
+  //     this.setIngredients();
+  //   }
+  // }
 
   handleToggleClick = () => {
     this.setState(prevState => ({
@@ -40,25 +39,19 @@ class Fridge extends Component {
   deleteIngredient = ingredient => {
     api.deleteIngredient(ingredient).then(res => {
       console.log(4, res);
-      this.setIngredients();
+      this.getIngredients();
     });
   };
 
-  setIngredients = () => {
-    let fridgeID = { fridgeID: this.props.fridge._id };
-    api.getIngredients(fridgeID).then(gotIngredients => {
-      this.setState({ didSearch: true });
-      this.setState({
-        ingredients: gotIngredients
-      });
-    });
+  getIngredients = async () => {
+    this.setState({ ingredients: await api.getIngredients() });
   };
+
   render() {
     return (
       <div className="Fridge">
         <h2>Fridge</h2>
         <Ingredients
-          fridge={this.props.fridge}
           deleteIngredient={this.deleteIngredient}
           ingredients={this.state.ingredients}
           setIngredients={this.setIngredients}
@@ -67,10 +60,7 @@ class Fridge extends Component {
           {!this.state.showForm ? 'Add Ingredient' : 'Hide'}
         </button>
         {this.state.showForm ? (
-          <AddIngredient
-            fridge={this.props.fridge}
-            setIngredients={this.setIngredients}
-          />
+          <AddIngredient getIngredients={this.getIngredients} />
         ) : null}
       </div>
     );

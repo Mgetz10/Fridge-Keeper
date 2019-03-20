@@ -64,31 +64,21 @@ export default {
     return service.get('/logout');
   },
 
-  getFridge() {
-    return service
-      .get('/getfridge')
-      .then(fridge => {
-        // console.log(fridge.data.fridge);
-        return fridge.data.fridge;
-      })
-      .catch(err => console.log(err));
-  },
-
   addIngredient(ingredientInfo) {
     return service
       .post('/addingredient', ingredientInfo)
       .then(res => {
         // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
         // localStorage.setItem('user', JSON.stringify(res.data));
+        console.log('yup', res.data);
         return res.data;
       })
       .catch(errHandler);
   },
 
-  getIngredients(fridgeID) {
-    console.log('check ME out  ', fridgeID);
+  getIngredients() {
     return service
-      .post('/getingredients', fridgeID)
+      .get('/getingredients')
       .then(res => {
         console.log('LOOK AT ME   ', res.data);
         return res.data;
@@ -97,7 +87,7 @@ export default {
   },
 
   deleteIngredient(ingredient) {
-    console.log(ingredient);
+    // console.log(ingredient);
     return service
       .post('/delete-ingredient', ingredient)
       .then(res => {
