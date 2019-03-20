@@ -1,5 +1,4 @@
 /* TODO
--> remove 'more ingredients'
 -> add selectable list
  -> create json file for available lists
 -> add pictures
@@ -11,6 +10,7 @@ import React, { Component } from 'react';
 import AddIngredient from '../AddIngredient';
 import Ingredients from '../Ingredients';
 import api from '../../api';
+import { Redirect } from 'react-router-dom';
 
 class Fridge extends Component {
   state = {
@@ -20,6 +20,8 @@ class Fridge extends Component {
   };
 
   componentDidMount() {
+    console.log(!api.isLoggedIn());
+
     this.getIngredients();
   }
 
@@ -48,13 +50,14 @@ class Fridge extends Component {
   };
 
   render() {
+    if (!api.isLoggedIn()) return <Redirect to="/login" />;
     return (
       <div className="Fridge">
         <h2>Fridge</h2>
         <Ingredients
-          deleteIngredient={this.deleteIngredient}
           ingredients={this.state.ingredients}
           setIngredients={this.setIngredients}
+          deleteIngredient={this.deleteIngredient}
         />
         <button onClick={this.handleToggleClick}>
           {!this.state.showForm ? 'Add Ingredient' : 'Hide'}

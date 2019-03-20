@@ -7,13 +7,25 @@ class MoreIngredients extends Component {
   //   ingredientsToSearch: lastIngredients
   // };
 
+  filterSearchedIngredients = searchedIngredients => {
+    let allIngredients = this.props.ingredients;
+    let filteredIngredients = allIngredients.filter(
+      ingredient => !searchedIngredients.includes(ingredient.name)
+    );
+    console.log('all: ', allIngredients, '  filt:  ', filteredIngredients);
+    return filteredIngredients;
+  };
+
   render() {
     console.log(this.props);
+    let filteredIngredients = this.filterSearchedIngredients(
+      this.props.lastSearch
+    );
     // let lastIngredients = this.props.match.params.ingredient.split('+');
     return (
       <div className="MoreIngredientsRecipesContainer">
         <div className="MoreIngredients flex">
-          {this.props.ingredients.map((oneIngredient, index) => {
+          {filteredIngredients.map((oneIngredient, index) => {
             return (
               <div key={index}>
                 <p
@@ -32,7 +44,13 @@ class MoreIngredients extends Component {
             return (
               <div className="flex" key={index}>
                 <p>{oneSearch}</p>
-                <span>×</span>
+                <span
+                  onClick={() => {
+                    this.props.deleteSearchIngredientHandler(oneSearch);
+                  }}
+                >
+                  ×
+                </span>
               </div>
             );
           })}

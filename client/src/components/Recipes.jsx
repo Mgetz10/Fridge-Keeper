@@ -10,7 +10,6 @@ let appID = '_app_id=' + process.env.REACT_APP_APP_ID;
 let apiKey = '&_app_key=' + process.env.REACT_APP_API_KEY;
 let searchURL = baseURL + appID + apiKey;
 let getURL = 'http://api.yummly.com/v1/api/recipe/';
-console.log(process.env.REACT_APP_API_KEY);
 
 class Recipes extends Component {
   state = {
@@ -46,7 +45,6 @@ class Recipes extends Component {
   }
 
   componentDidMount() {
-    console.log('mounted', this.state.ingredients);
     this.getIngredients();
     this.callApi();
   }
@@ -55,15 +53,28 @@ class Recipes extends Component {
     this.setState({ ingredients: await api.getIngredients() });
   };
 
-  addSearchIngredientHandler = newIngredient => {
+  addSearchIngredientHandler = ingredientToSearch => {
     let newSearchIngredients = this.state.lastSearch;
-    newSearchIngredients.push(newIngredient);
+    newSearchIngredients.push(ingredientToSearch);
     this.setState({
       lastSearch: newSearchIngredients,
       yummlyQuery:
         searchURL +
         '&q=' +
         newSearchIngredients.join('+') +
+        '&requirePictures=true&maxResult=20&start=10'
+    });
+  };
+
+  deleteSearchIngredientHandler = ingredientToRemoveFromSearch => {
+    let lastSearch = this.state.lastSearch;
+    lastSearch.splice(lastSearch.indexOf(ingredientToRemoveFromSearch), 1);
+    this.setState({
+      lastSearch: lastSearch,
+      yummlyQuery:
+        searchURL +
+        '&q=' +
+        lastSearch.join('+') +
         '&requirePictures=true&maxResult=20&start=10'
     });
   };
@@ -99,6 +110,7 @@ class Recipes extends Component {
         <MoreIngredients
           lastSearch={this.state.lastSearch}
           addSearchIngredientHandler={this.addSearchIngredientHandler}
+          deleteSearchIngredientHandler={this.deleteSearchIngredientHandler}
           ingredients={this.state.ingredients ? this.state.ingredients : []}
         />
         {this.state.recipes.map((oneRecipe, index) => {
@@ -111,6 +123,7 @@ class Recipes extends Component {
             </a>
           );
         })}
+        {this.state.yummlyQuery}
       </div>
     );
   }

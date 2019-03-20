@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Milk",
+    "shelfLife": 7,
+    "image": "milk.png"
+  },
+  {
+    "name": "Butter",
+    "shelfLife": 14,
+    "image": "butter.png"
+  },
+  {
+    "name": "Yogurt",
+    "shelfLife": 31,
+    "image": "yogurt.png"
+  },
+  {
+    "name": "Pork",
+    "shelfLife": 3,
+    "image": "pork.png"
+  },
+  {
+    "name": "Beef",
+    "shelfLife": 3,
+    "image": "beef.png"
+  },
+  {
+    "name": "Chicken",
+    "shelfLife": 2,
+    "image": "chicken.png"
+  },
+  {
+    "name": "Bacon",
+    "shelfLife": 7,
+    "image": "bacon.png"
+  },
+  {
+    "name": "Eggs",
+    "shelfLife": 21,
+    "image": "eggs.png"
+  },
+  {
+    "name": "Salmon",
+    "shelfLife": 2,
+    "image": "salmon.png"
+  },
+  {
+    "name": "Apple",
+    "shelfLife": 31,
+    "image": "apple.png"
+  },
+  {
+    "name": "Lime",
+    "shelfLife": 28,
+    "image": "limes.png"
+  },
+  {
+    "name": "Grapes",
+    "shelfLife": 14,
+    "image": "grapes.png"
+  },
+  {
+    "name": "Cantaloupe",
+    "shelfLife": 7,
+    "image": "cantaloupe.png"
+  },
+  {
+    "name": "Peach",
+    "shelfLife": 18,
+    "image": "peach.png"
+  },
+  {
+    "name": "Strawberries",
+    "shelfLife": 5,
+    "image": "strawberries.png"
+  },
+  {
+    "name": "Broccoli",
+    "shelfLife": 5,
+    "image": "broccoli.png"
+  }
+]
