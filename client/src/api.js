@@ -65,6 +65,7 @@ export default {
   },
 
   addIngredient(ingredientInfo) {
+    console.log('OKOKOK', ingredientInfo);
     return service
       .post('/addingredient', ingredientInfo)
       .then(res => {
@@ -95,6 +96,16 @@ export default {
         return res.data;
       })
       .catch(errHandler);
+  },
+
+  getFridge() {
+    return service
+      .get('/getfridge')
+      .then(res => {
+        console.log('LOOK ', res.data.fridge._id);
+        return res.data.fridge._id;
+      })
+      .catch(err => console.log(err));
   }
   // This is an example on how to use this method in a different file
   // api.getCountries().then(countries => { /* ... */ })

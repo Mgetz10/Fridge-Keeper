@@ -2,81 +2,131 @@
   {
     "name": "Milk",
     "shelfLife": 7,
-    "image": "milk.png"
+    "image": "../../images/milk.png"
   },
   {
     "name": "Butter",
     "shelfLife": 14,
-    "image": "butter.png"
+    "image": "../../images/butter.png"
+  },
+  {
+    "name": "Parmesean",
+    "shelfLife": 42,
+    "image": "../../images/hard-cheese.png"
   },
   {
     "name": "Yogurt",
     "shelfLife": 31,
-    "image": "yogurt.png"
+    "image": "../../images/yogurt.png"
   },
   {
     "name": "Pork",
     "shelfLife": 3,
-    "image": "pork.png"
+    "image": "../../images/pork.png"
   },
   {
     "name": "Beef",
     "shelfLife": 3,
-    "image": "beef.png"
+    "image": "../../images/beef.png"
   },
   {
     "name": "Chicken",
     "shelfLife": 2,
-    "image": "chicken.png"
+    "image": "../../images/chicken.png"
   },
   {
     "name": "Bacon",
     "shelfLife": 7,
-    "image": "bacon.png"
+    "image": "../../images/bacon.png"
   },
   {
     "name": "Eggs",
     "shelfLife": 21,
-    "image": "eggs.png"
+    "image": "../../images/eggs.png"
   },
   {
     "name": "Salmon",
     "shelfLife": 2,
-    "image": "salmon.png"
+    "image": "../../images/salmon.png"
   },
   {
     "name": "Apple",
     "shelfLife": 31,
-    "image": "apple.png"
+    "image": "../../images/apple.png"
   },
   {
     "name": "Lime",
     "shelfLife": 28,
-    "image": "limes.png"
+    "image": "../../images/limes.png"
+  },
+  {
+    "name": "Lemons",
+    "shelfLife": 28,
+    "image": "../../images/lemon.png"
   },
   {
     "name": "Grapes",
     "shelfLife": 14,
-    "image": "grapes.png"
+    "image": "../../images/grapes.png"
   },
   {
     "name": "Cantaloupe",
     "shelfLife": 7,
-    "image": "cantaloupe.png"
+    "image": "../../images/cantaloupe.png"
   },
   {
     "name": "Peach",
     "shelfLife": 18,
-    "image": "peach.png"
+    "image": "../../images/peach.png"
   },
   {
     "name": "Strawberries",
     "shelfLife": 5,
-    "image": "strawberries.png"
+    "image": "../../images/strawberries.png"
   },
   {
     "name": "Broccoli",
     "shelfLife": 5,
-    "image": "broccoli.png"
+    "image": "../../images/broccoli.png"
+  },
+  {
+    "name": "Romaine",
+    "shelfLife": 7,
+    "image": "../../images/lettuce.webp"
+  },
+  {
+    "name": "Tomatoes",
+    "shelfLife": 7,
+    "image": "../../images/tomato.png"
+  },
+  {
+    "name": "Green Beans",
+    "shelfLife": 5,
+    "image": "../../images/green-beans.png"
+  },
+  {
+    "name": "Cucumbers",
+    "shelfLife": 7,
+    "image": "../../images/cucumbers.webp"
+  },
+  {
+    "name": "Carrots",
+    "shelfLife": 14,
+    "image": "../../images/carrots.png"
+  },
+  {
+    "name": "Potatoes",
+    "shelfLife": 14,
+    "image": "../../images/potatoes.png"
+  },
+  {
+    "name": "Bread",
+    "shelfLife": 14,
+    "image": "../../images/bread.png"
+  },
+  {
+    "name": "Mayonnaise",
+    "shelfLife": 77,
+    "image": "../../images/mayonnaise.png"
   }
 ]

@@ -15,12 +15,9 @@ class Recipes extends Component {
   state = {
     ingredients: [],
     recipes: [],
-    lastSearch: [this.props.location.state],
-    yummlyQuery:
-      searchURL +
-      '&q=' +
-      this.props.location.state +
-      '&requirePictures=true&maxResult=20&start=10'
+    lastSearch: [],
+    lastSearchObject: [this.props.location.state],
+    yummlyQuery: ''
   };
 
   componentWillReceiveProps(prevProps, nextProps) {
@@ -45,6 +42,21 @@ class Recipes extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.location.state);
+    let urlIngredients = [];
+    this.state.lastSearchObject.map(ingredient => {
+      console.log(ingredient);
+      urlIngredients.push(ingredient.name.split(' ').join('+'));
+    });
+    console.log(urlIngredients);
+    this.setState({
+      lastSearch: urlIngredients,
+      yummlyQuery:
+        searchURL +
+        '&q=' +
+        urlIngredients.join('+') +
+        '&requirePictures=true&maxResult=20&start=10'
+    });
     this.getIngredients();
     this.callApi();
   }
@@ -55,9 +67,13 @@ class Recipes extends Component {
 
   addSearchIngredientHandler = ingredientToSearch => {
     let newSearchIngredients = this.state.lastSearch;
-    newSearchIngredients.push(ingredientToSearch);
+    let newSearchIngredientObjects = this.state.lastSearchObject;
+    newSearchIngredients.push(ingredientToSearch.name);
+    newSearchIngredientObjects.push(ingredientToSearch);
+    console.log(ingredientToSearch);
     this.setState({
       lastSearch: newSearchIngredients,
+      lastSearchObject: newSearchIngredientObjects,
       yummlyQuery:
         searchURL +
         '&q=' +
@@ -109,6 +125,7 @@ class Recipes extends Component {
       <div className="Recipes">
         <MoreIngredients
           lastSearch={this.state.lastSearch}
+          lastSearchObject={this.state.lastSearchObject}
           addSearchIngredientHandler={this.addSearchIngredientHandler}
           deleteSearchIngredientHandler={this.deleteSearchIngredientHandler}
           ingredients={this.state.ingredients ? this.state.ingredients : []}

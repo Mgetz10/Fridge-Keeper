@@ -101,3 +101,20 @@ body {
 .MoreIngredients {
   overflow: scroll;
 }
+
+.ingredient-image-container {
+  width: 10%;
+}
+
+.ingredient-image {
+  width: 100%;
+}
+
+.ingredient-image img {
+  max-width: 100%;
+  display: block;
+}
+
+.link-container {
+  width: 100%;
+}

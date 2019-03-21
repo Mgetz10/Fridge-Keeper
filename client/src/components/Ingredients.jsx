@@ -8,16 +8,21 @@ class Ingredients extends Component {
     return (
       <div className="Ingredients">
         {this.props.ingredients.map((oneIngredient, index) => {
+          console.log(oneIngredient);
           return (
-            <div key={index}>
-              <div className="flex">
+            <div key={index} className="flex">
+              <div className="ingredient-image-container flex">
                 <Link
+                  className="link-container"
                   to={{
                     pathname: `/recipes`,
-                    state: oneIngredient.name.split(' ').join('+')
+                    state: oneIngredient
                   }}
                 >
-                  <p>{oneIngredient.name}</p>
+                  <div className="ingredient-image">
+                    <img src={oneIngredient.image} />
+                  </div>
+                  {/* <p>{oneIngredient.name}</p> */}
                 </Link>
                 <span
                   onClick={() => {

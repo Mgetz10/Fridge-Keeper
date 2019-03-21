@@ -27,23 +27,27 @@ class MoreIngredients extends Component {
         <div className="MoreIngredients flex">
           {filteredIngredients.map((oneIngredient, index) => {
             return (
-              <div key={index}>
-                <p
+              <div key={index} className="ingredient-image-container">
+                <div
+                  className="ingredient-image"
                   onClick={() => {
-                    this.props.addSearchIngredientHandler(oneIngredient.name);
+                    this.props.addSearchIngredientHandler(oneIngredient);
                   }}
                 >
-                  {oneIngredient.name}
-                </p>
+                  <img src={oneIngredient.image} />
+                </div>
               </div>
             );
           })}
         </div>
         <div className="flex">
-          {this.props.lastSearch.map((oneSearch, index) => {
+          {this.props.lastSearchObject.map((oneSearch, index) => {
+            console.log('check', oneSearch);
             return (
-              <div className="flex" key={index}>
-                <p>{oneSearch}</p>
+              <div className="ingredient-image-container flex" key={index}>
+                <div className="ingredient-image">
+                  <img src={oneSearch.image} />
+                </div>
                 <span
                   onClick={() => {
                     this.props.deleteSearchIngredientHandler(oneSearch);

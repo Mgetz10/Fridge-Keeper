@@ -16,12 +16,18 @@ router.get('/getfridge', (req, res, next) => {
 });
 
 router.post('/addingredient', (req, res, next) => {
-  const { name, expdate, daysleft, fridge } = req.body;
+  const { name, expdate, daysleft, fridge, image } = req.body;
   if (!name) {
     res.status(400).json({ message: 'Add ingredient name' });
     return;
   }
-  const newIngredient = new Ingredient({ name, expdate, daysleft, fridge });
+  const newIngredient = new Ingredient({
+    name,
+    expdate,
+    daysleft,
+    fridge,
+    image
+  });
   newIngredient.save().then(ingredientSaved => {
     Fridge.find({ user_id: req.user._id }).then(fridgeToPush => {
       fridgeToPush[0].ingredients.push(ingredientSaved._id);
@@ -32,8 +38,10 @@ router.post('/addingredient', (req, res, next) => {
 });
 
 router.get('/getingredients', (req, res, next) => {
+  console.log('made it');
   Fridge.find({ user_id: req.user._id }).then(fridgeToOpen => {
-    Ingredient.find({ fridge: fridgeToOpen._id }).then(ingredients => {
+    console.log('too good', fridgeToOpen[0]._id);
+    Ingredient.find({ fridge: fridgeToOpen[0]._id }).then(ingredients => {
       console.log('me', ingredients);
       res.send(ingredients);
     });
