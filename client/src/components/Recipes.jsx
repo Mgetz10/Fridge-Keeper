@@ -55,7 +55,7 @@ class Recipes extends Component {
         searchURL +
         '&q=' +
         urlIngredients.join('+') +
-        '&requirePictures=true&maxResult=20&start=10'
+        '&requirePictures=true&maxResult=50&start=10'
     });
     this.getIngredients();
     this.callApi();

@@ -46,6 +46,7 @@ body {
   --light-color: #22aaa1;
   --light2-color: #84cae7;
   background: #22aaa12e;
+  height: 200%;
 
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -215,4 +216,24 @@ body {
 .recipes img {
   margin: 0 2px;
   border: solid 1px black;
+}
+
+.preset-ingredients {
+  padding: 1px 4px;
+  border: solid 1px #00000047;
+  margin: 1px 0;
+  box-shadow: 0px 0px 2px inset;
+  border-radius: 6px;
+  background: var(--dark2-color);
+  color: white;
+}
+
+.Add-Ingredient h2 {
+  margin: 8px 0 8px;
+  font-size: 1rem;
+}
+.presets2 {
+  overflow: scroll;
+  position: relative;
+  // margin:  0 0 3px;
 }

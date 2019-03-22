@@ -98,11 +98,12 @@ class AddIngredient extends Component {
         )}
         <div className="flex">
           <div className="presets flex">
-            <div className="flex column">
+            <div className="presets2">
               {this.state.filteredIngredients.map((ingredient, index) => {
                 return (
                   <p
                     key={index}
+                    className="preset-ingredients"
                     onClick={() => {
                       this.presetIngredientClickHandler(ingredient);
                     }}
