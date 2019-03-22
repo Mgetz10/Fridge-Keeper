@@ -39,6 +39,9 @@ router.post('/addingredient', (req, res, next) => {
 
 router.get('/getingredients', (req, res, next) => {
   console.log('made it');
+  if (!req.user) {
+    return res.send('not logged in');
+  }
   Fridge.find({ user_id: req.user._id }).then(fridgeToOpen => {
     console.log('too good', fridgeToOpen[0]._id);
     Ingredient.find({ fridge: fridgeToOpen[0]._id }).then(ingredients => {
