@@ -5,11 +5,11 @@ import Ingredients from './Ingredients';
 import api from '../api';
 import history from 'react-router-dom';
 
-let baseURL = 'http://api.yummly.com/v1/api/recipes?';
+let baseURL = 'https://api.yummly.com/v1/api/recipes?';
 let appID = '_app_id=' + process.env.REACT_APP_APP_ID;
 let apiKey = '&_app_key=' + process.env.REACT_APP_API_KEY;
 let searchURL = baseURL + appID + apiKey;
-let getURL = 'http://api.yummly.com/v1/api/recipe/';
+let getURL = 'https://api.yummly.com/v1/api/recipe/';
 
 class Recipes extends Component {
   state = {
