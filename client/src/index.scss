@@ -45,6 +45,7 @@ body {
   --dark2-color: #136f63;
   --light-color: #22aaa1;
   --light2-color: #84cae7;
+  background: #22aaa12e;
 
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -57,14 +58,14 @@ body {
     color: white;
 
     a {
-      color: white;
+      // color: white;
       padding: 0 5px;
       text-decoration: unset;
     }
 
-    a.active {
-      font-weight: bold;
-    }
+    // a.active {
+    //   // font-weight: bold;
+    // }
   }
 
   .App-title {
@@ -108,12 +109,8 @@ body {
   justify-content: flex-end;
 }
 
-.user {
-  margin-right: auto;
-}
-
 .MoreIngredientsRecipesContainer {
-  margin: 1% 0;
+  padding: 1% 0;
 }
 
 .MoreIngredients {
@@ -152,9 +149,8 @@ body {
   width: 236px;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-justify-content: space-between;
   justify-content: space-between;
-  background: #84cae73b;
+  background: linear-gradient(white, #84cae73b);
   border: 8px var(--dark-color) solid;
   border-radius: 21px;
   overflow: hidden;
@@ -162,16 +158,8 @@ body {
   padding: 1%;
 }
 
-.last-search {
-  margin: 0 2%;
-}
-
 .last-search-row {
   margin: 1% 0;
-}
-
-.selectables {
-  margin: 0 1%;
 }
 
 .form {
@@ -187,4 +175,49 @@ body {
 .presets {
   width: 50%;
   justify-content: flex-start;
+}
+
+.magnet {
+  background: white;
+  color: var(--dark-color);
+  margin: 1%;
+  box-shadow: 2px 2px;
+}
+
+.mag-1 {
+  transform: rotate(2deg);
+}
+
+.mag-2 {
+  position: relative;
+  margin-top: -4px;
+  transform: rotate(-1deg);
+}
+
+.mag-3 {
+  transform: rotate(0deg);
+}
+
+.user {
+  margin-right: auto;
+  padding: 1px 2px;
+}
+
+.food-head {
+  width: 100px;
+}
+
+// .selectables :nth-child() {
+//   // margin: 0 1%;
+// }
+
+.last-search {
+  padding: 0.4% 1%;
+  margin: 1% 2%;
+}
+
+.recipes img {
+  margin: 0 2px;
+  // box-shadow: 1px 1px black;
+  border: solid 1px black;
 }

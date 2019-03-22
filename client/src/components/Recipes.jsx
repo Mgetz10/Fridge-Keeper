@@ -103,28 +103,28 @@ class Recipes extends Component {
 
   callApi = () => {
     console.log(this.state.yummlyQuery);
-    // axios
-    //   .get(this.state.yummlyQuery)
-    //   .then(response => {
-    //     console.log(response.data.matches);
-    //     return response.data.matches;
-    //   })
-    //   .then(searchResults => {
-    //     let newRecipes = [];
-    //     searchResults.map(recipe => {
-    //       let getRequest = getURL + recipe.id + '?' + appID + apiKey;
-    //       return axios
-    //         .get(getRequest)
-    //         .then(responseTwo => {
-    //           // console.log('What if this works    ', responseTwo.data);
-    //           newRecipes.push(responseTwo.data);
-    //           this.setState({ recipes: newRecipes });
-    //         })
-    //         .then(() => {
-    //           // console.log(this.state.recipes);
-    //         });
-    //     });
-    //   });
+    axios
+      .get(this.state.yummlyQuery)
+      .then(response => {
+        console.log(response.data.matches);
+        return response.data.matches;
+      })
+      .then(searchResults => {
+        let newRecipes = [];
+        searchResults.map(recipe => {
+          let getRequest = getURL + recipe.id + '?' + appID + apiKey;
+          return axios
+            .get(getRequest)
+            .then(responseTwo => {
+              // console.log('What if this works    ', responseTwo.data);
+              newRecipes.push(responseTwo.data);
+              this.setState({ recipes: newRecipes });
+            })
+            .then(() => {
+              // console.log(this.state.recipes);
+            });
+        });
+      });
   };
   render() {
     console.log(this.state.ingredients);
@@ -139,7 +139,12 @@ class Recipes extends Component {
         />
         {this.state.recipes.map((oneRecipe, index) => {
           return (
-            <a href={oneRecipe.source.sourceRecipeUrl} key={index}>
+            <a
+              className="recipes"
+              href={oneRecipe.source.sourceRecipeUrl}
+              key={index}
+            >
+              {/* <p>{oneRecipe.name}</p> */}
               <img
                 src={oneRecipe.images[0].hostedMediumUrl}
                 alt={oneRecipe.name}

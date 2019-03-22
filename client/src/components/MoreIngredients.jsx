@@ -28,7 +28,7 @@ class MoreIngredients extends Component {
           <div className="MoreIngredients flex">
             {filteredIngredients.map((oneIngredient, index) => {
               return (
-                <div className="selectables">
+                <div className="magnet selectables">
                   <div key={index} className="ingredient-image-container">
                     <div
                       className="ingredient-image flex"
@@ -48,7 +48,7 @@ class MoreIngredients extends Component {
           {this.props.lastSearchObject.map((oneSearch, index) => {
             console.log('check', oneSearch);
             return (
-              <div className="last-search">
+              <div className="last-search magnet">
                 <div className="ingredient-image-container flex" key={index}>
                   <div className="ingredient-image flex">
                     <img src={oneSearch.image} />
