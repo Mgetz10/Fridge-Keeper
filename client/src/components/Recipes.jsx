@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import MoreIngredients from './MoreIngredients';
 import axios from 'axios';
 import Ingredients from './Ingredients';
-import history from 'react-router-dom';
 import api from '../api';
+import history from 'react-router-dom';
 
 let baseURL = 'http://api.yummly.com/v1/api/recipes?';
 let appID = '_app_id=' + process.env.REACT_APP_APP_ID;
