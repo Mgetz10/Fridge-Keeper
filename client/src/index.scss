@@ -63,9 +63,9 @@ body {
       text-decoration: unset;
     }
 
-    // a.active {
-    //   // font-weight: bold;
-    // }
+    a.active {
+      font-weight: bold;
+    }
   }
 
   .App-title {
@@ -207,10 +207,6 @@ body {
   width: 100px;
 }
 
-// .selectables :nth-child() {
-//   // margin: 0 1%;
-// }
-
 .last-search {
   padding: 0.4% 1%;
   margin: 1% 2%;
@@ -218,6 +214,5 @@ body {
 
 .recipes img {
   margin: 0 2px;
-  // box-shadow: 1px 1px black;
   border: solid 1px black;
 }
