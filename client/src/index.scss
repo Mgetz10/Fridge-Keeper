@@ -40,6 +40,11 @@ body {
 // Style for App component
 .App {
   text-align: center;
+  --accent-color: #32c2ff;
+  --dark-color: #041b15;
+  --dark2-color: #136f63;
+  --light-color: #22aaa1;
+  --light2-color: #84cae7;
 
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -47,8 +52,8 @@ body {
   }
 
   .App-header {
-    background-color: $primary;
-    padding: 20px;
+    background-color: var(--light2-color);
+    padding: 1% 1% 0.5%;
     color: white;
 
     a {
@@ -64,6 +69,7 @@ body {
 
   .App-title {
     font-size: 1.5em;
+    margin: 4% 0 1%;
   }
 
   .App-intro {
@@ -98,12 +104,28 @@ body {
   }
 }
 
+.nav-bar {
+  justify-content: flex-end;
+}
+
+.user {
+  margin-right: auto;
+}
+
+.MoreIngredientsRecipesContainer {
+  margin: 1% 0;
+}
+
 .MoreIngredients {
   overflow: scroll;
+  width: 80%;
 }
 
 .ingredient-image-container {
-  width: 10%;
+  width: 90%;
+}
+.ingredient-image-container span {
+  font-size: 0.5rem;
 }
 
 .ingredient-image {
@@ -112,9 +134,57 @@ body {
 
 .ingredient-image img {
   max-width: 100%;
+  max-height: 38px;
   display: block;
 }
 
 .link-container {
   width: 100%;
+}
+
+.fridge-ingredients {
+  width: 33.3%;
+  border-bottom: #041b1575 1px solid;
+  padding: 3% 0 1%;
+}
+
+.refrigerator {
+  width: 236px;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  background: #84cae73b;
+  border: 8px var(--dark-color) solid;
+  border-radius: 21px;
+  overflow: hidden;
+  box-shadow: -6px -5px var(--dark-color);
+  padding: 1%;
+}
+
+.last-search {
+  margin: 0 2%;
+}
+
+.last-search-row {
+  margin: 1% 0;
+}
+
+.selectables {
+  margin: 0 1%;
+}
+
+.form {
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.form-inputs {
+  width: 50%;
+}
+
+.presets {
+  width: 50%;
+  justify-content: flex-start;
 }

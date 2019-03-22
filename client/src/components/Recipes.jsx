@@ -20,25 +20,25 @@ class Recipes extends Component {
     yummlyQuery: ''
   };
 
-  componentWillReceiveProps(prevProps, nextProps) {
-    // if (
-    //   prevProps.match.params.ingredient !== this.props.match.params.ingredient
-    // ) {
-    //   console.log('will receive props', prevProps.match.params.ingredient);
-    //   this.setState(
-    //     {
-    //       yummlyQuery:
-    //         searchURL +
-    //         '&q=' +
-    //         prevProps.match.params.ingredient +
-    //         '&requirePictures=true&maxResult=20&start=10'
-    //     },
-    //     () => {
-    //       console.log(this.state.yummlyQuery, 'heyo');
-    //       this.callApi();
-    //     }
-    //   );
-    // }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('That  ', prevProps, '  THIS  ', prevState);
+    if (prevState.yummlyQuery !== this.state.yummlyQuery) {
+      // console.log('will receive props', prevProps.match.params.ingredient);
+      // this.setState(
+      //   {
+      //     yummlyQuery:
+      //       searchURL +
+      //       '&q=' +
+      //       prevProps.match.params.ingredient +
+      //       '&requirePictures=true&maxResult=20&start=10'
+      //   },
+      //   () => {
+      //     console.log(this.state.yummlyQuery, 'heyo');
+      this.callApi();
+      //   }
+      // );
+    }
+    // this.callApi();
   }
 
   componentDidMount() {
@@ -84,9 +84,15 @@ class Recipes extends Component {
 
   deleteSearchIngredientHandler = ingredientToRemoveFromSearch => {
     let lastSearch = this.state.lastSearch;
+    let lastSearchObject = this.state.lastSearchObject;
     lastSearch.splice(lastSearch.indexOf(ingredientToRemoveFromSearch), 1);
+    lastSearchObject.splice(
+      lastSearch.indexOf(ingredientToRemoveFromSearch),
+      1
+    );
     this.setState({
       lastSearch: lastSearch,
+      lastSearchObject: lastSearchObject,
       yummlyQuery:
         searchURL +
         '&q=' +
@@ -96,10 +102,11 @@ class Recipes extends Component {
   };
 
   callApi = () => {
+    console.log(this.state.yummlyQuery);
     // axios
     //   .get(this.state.yummlyQuery)
     //   .then(response => {
-    //     // console.log(response.data.matches);
+    //     console.log(response.data.matches);
     //     return response.data.matches;
     //   })
     //   .then(searchResults => {
@@ -140,7 +147,7 @@ class Recipes extends Component {
             </a>
           );
         })}
-        {this.state.yummlyQuery}
+        {/* {this.state.yummlyQuery} */}
       </div>
     );
   }

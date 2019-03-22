@@ -70,39 +70,49 @@ class AddIngredient extends Component {
     return (
       <div className="Add-Ingredient">
         <h2>Add Ingredient</h2>
-        <form>
-          Name:
-          <input
-            type="text"
-            value={this.state.name}
-            name="name"
-            onChange={this.handleInputChange}
-          />
-          Expiration Date:
-          <input
-            type="date"
-            value={this.state.expdate}
-            name="expdate"
-            onChange={this.handleInputChange}
-          />
-          <button onClick={e => this.handleClick(e)}>Add Ingredient</button>
+        <form className="form flex">
+          {/* <div> */}
+          <div className="form-inputs">
+            Name:
+            <input
+              type="text"
+              value={this.state.name}
+              name="name"
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <div className="form-inputs">
+            Expiration Date:
+            <input
+              type="date"
+              value={this.state.expdate}
+              name="expdate"
+              onChange={this.handleInputChange}
+            />
+            <button onClick={e => this.handleClick(e)}>Add Ingredient</button>
+            {/* </div> */}
+          </div>
         </form>
         {this.state.message && (
           <div className="info info-danger">{this.state.message}</div>
         )}
-        <div className="flex column">
-          {this.state.filteredIngredients.map((ingredient, index) => {
-            return (
-              <p
-                key={index}
-                onClick={() => {
-                  this.presetIngredientClickHandler(ingredient);
-                }}
-              >
-                {ingredient.name}
-              </p>
-            );
-          })}
+        <div className="flex">
+          <div className="presets flex">
+            <div className="flex column">
+              {this.state.filteredIngredients.map((ingredient, index) => {
+                return (
+                  <p
+                    key={index}
+                    onClick={() => {
+                      this.presetIngredientClickHandler(ingredient);
+                    }}
+                  >
+                    {ingredient.name}
+                  </p>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     );
