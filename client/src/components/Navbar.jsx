@@ -12,7 +12,7 @@ class Navbar extends Component {
     return (
       <header className="App-header">
         <div className="nav-bar flex">
-          <div className="magnet mag-3 user">{this.props.user.username}</div>
+          <div className="magnet user">{this.props.user.username}</div>
           {api.isLoggedIn() && (
             <NavLink className="magnet mag-1" to="/" exact>
               Home

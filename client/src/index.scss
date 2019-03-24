@@ -38,6 +38,27 @@ body {
 
 // --------------------
 // Style for App component
+html,
+body,
+.App,
+#root {
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+.flex.row {
+  justify-content: space-around;
+}
+
 .App {
   text-align: center;
   --accent-color: #32c2ff;
@@ -62,6 +83,7 @@ body {
       // color: white;
       padding: 0 5px;
       text-decoration: unset;
+      // font-size: 2rem;
     }
 
     a.active {
@@ -70,7 +92,7 @@ body {
   }
 
   .App-title {
-    font-size: 1.5em;
+    // font-size: 3rem;
     margin: 4% 0 1%;
   }
 
@@ -122,6 +144,7 @@ body {
 .ingredient-image-container {
   width: 90%;
 }
+
 .ingredient-image-container span {
   font-size: 0.5rem;
 }
@@ -132,7 +155,7 @@ body {
 
 .ingredient-image img {
   max-width: 100%;
-  max-height: 38px;
+  // max-height: 76px;
   display: block;
 }
 
@@ -147,7 +170,7 @@ body {
 }
 
 .refrigerator {
-  width: 236px;
+  // width: 472px;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -202,11 +225,13 @@ body {
 .user {
   margin-right: auto;
   padding: 1px 2px;
+  transform: rotate(-2deg);
+  // font-size: 2rem;
 }
 
-.food-head {
-  width: 100px;
-}
+// .food-head {
+//   width: 200px;
+// }
 
 .last-search {
   padding: 0.4% 1%;
@@ -236,4 +261,81 @@ body {
   overflow: scroll;
   position: relative;
   // margin:  0 0 3px;
+}
+
+// .Fridge h2 {
+//   font-size: 48px;
+// }
+
+.Fridge button {
+  // font-size: 1.5rem;
+  margin-top: 1%;
+}
+
+@media only screen and (max-width: 600px) {
+  // .App-header a {
+  //   font-size: 1rem;
+  // }
+
+  .App-title {
+    font-size: 1.5rem;
+  }
+
+  .ingredient-image img {
+    max-width: 100%;
+    max-height: 38px;
+    display: block;
+  }
+
+  .refrigerator {
+    width: 236px;
+  }
+  .food-head {
+    width: 100px;
+  }
+  // .user {
+  //   font-size: 1rem;
+  // }
+
+  .Fridge h2 {
+    font-size: 24px;
+  }
+
+  .Fridge button {
+    font-size: 0.75rem;
+    margin-top: 1%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .App-header a {
+    font-size: 2rem;
+  }
+
+  .App-title {
+    font-size: 3rem;
+  }
+
+  .ingredient-image img {
+    max-height: 76px;
+  }
+
+  .refrigerator {
+    width: 472px;
+  }
+
+  .food-head {
+    width: 200px;
+  }
+
+  .user {
+    font-size: 2rem;
+  }
+
+  .Fridge h2 {
+    font-size: 48px;
+  }
+
+  .Fridge button {
+    font-size: 1.5rem;
+  }
 }
