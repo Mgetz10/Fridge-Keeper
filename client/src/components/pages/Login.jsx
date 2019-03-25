@@ -5,8 +5,8 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
+      username: 'Demo',
+      password: 'Demo',
       message: null
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -14,7 +14,7 @@ export default class Login extends Component {
 
   handleInputChange(event) {
     this.setState({
-      [event.target.name]: event.target.value ? event.target.value : 'Demo'
+      [event.target.name]: event.target.value
     });
   }
 
