@@ -23,8 +23,6 @@ export default class Login extends Component {
     api
       .login(this.state.username, this.state.password)
       .then(result => {
-        // console.log(api.getLocalStorageUser())
-        // this.setState({user:api.getLocalStorageUser()})
         this.props.setUser();
         this.props.history.push('/'); // Redirect to the home page
       })
@@ -32,7 +30,6 @@ export default class Login extends Component {
   }
 
   render() {
-    console.log();
     return (
       <div className="Login">
         <h2>Login</h2>

@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../api';
 
 class Ingredients extends Component {
   ingredientsCopy = [...this.props.ingredients];
 
   render() {
-    // console.log(this.props.ingredients);
     return (
       <div className="Ingredients flex">
         <div className="refrigerator flex">
           {this.props.ingredients.map((oneIngredient, index) => {
-            console.log(oneIngredient);
             return (
               <div key={index} className="fridge-ingredients flex">
                 <div className="ingredient-image-container flex">
@@ -23,9 +20,8 @@ class Ingredients extends Component {
                     }}
                   >
                     <div className="ingredient-image">
-                      <img src={oneIngredient.image} />
+                      <img src={oneIngredient.image} alt={oneIngredient.name} />
                     </div>
-                    {/* <p>{oneIngredient.name}</p> */}
                   </Link>
                   <span
                     onClick={() => {

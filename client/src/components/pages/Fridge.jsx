@@ -20,17 +20,8 @@ class Fridge extends Component {
   };
 
   componentDidMount() {
-    console.log(!api.isLoggedIn());
-
     this.getIngredients();
   }
-
-  // componentDidUpdate() {
-  //   console.log(this.state.didSearch);
-  //   if (!this.state.didSearch) {
-  //     this.setIngredients();
-  //   }
-  // }
 
   handleToggleClick = () => {
     this.setState(prevState => ({
@@ -40,7 +31,6 @@ class Fridge extends Component {
 
   deleteIngredient = ingredient => {
     api.deleteIngredient(ingredient).then(res => {
-      console.log(4, res);
       this.getIngredients();
     });
   };

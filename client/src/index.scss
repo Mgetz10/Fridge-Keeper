@@ -138,7 +138,6 @@ body,
 
 .ingredient-image img {
   max-width: 100%;
-  // max-height: 76px;
   display: block;
 }
 
@@ -208,12 +207,7 @@ body,
   margin-right: auto;
   padding: 1px 2px;
   transform: rotate(-2deg);
-  // font-size: 2rem;
 }
-
-// .food-head {
-//   width: 200px;
-// }
 
 .last-search {
   padding: 0.4% 1%;
@@ -242,23 +236,13 @@ body,
 .presets2 {
   overflow: scroll;
   position: relative;
-  // margin:  0 0 3px;
 }
 
-// .Fridge h2 {
-//   font-size: 48px;
-// }
-
 .Fridge button {
-  // font-size: 1.5rem;
   margin-top: 1%;
 }
 
 @media only screen and (max-width: 600px) {
-  // .App-header a {
-  //   font-size: 1rem;
-  // }
-
   .App-title {
     font-size: 1.5rem;
   }
@@ -275,9 +259,6 @@ body,
   .food-head {
     width: 100px;
   }
-  // .user {
-  //   font-size: 1rem;
-  // }
 
   .Fridge h2 {
     font-size: 24px;

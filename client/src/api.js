@@ -65,13 +65,9 @@ export default {
   },
 
   addIngredient(ingredientInfo) {
-    console.log('OKOKOK', ingredientInfo);
     return service
       .post('/addingredient', ingredientInfo)
       .then(res => {
-        // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
-        // localStorage.setItem('user', JSON.stringify(res.data));
-        console.log('yup', res.data);
         return res.data;
       })
       .catch(errHandler);
@@ -81,18 +77,15 @@ export default {
     return service
       .get('/getingredients')
       .then(res => {
-        console.log('LOOK AT ME   ', res.data);
         return res.data;
       })
       .catch(err => console.log(err));
   },
 
   deleteIngredient(ingredient) {
-    // console.log(ingredient);
     return service
       .post('/delete-ingredient', ingredient)
       .then(res => {
-        console.log(3, res);
         return res.data;
       })
       .catch(errHandler);
@@ -102,11 +95,8 @@ export default {
     return service
       .get('/getfridge')
       .then(res => {
-        console.log('LOOK ', res.data.fridge._id);
         return res.data.fridge._id;
       })
       .catch(err => console.log(err));
   }
-  // This is an example on how to use this method in a different file
-  // api.getCountries().then(countries => { /* ... */ })
 };

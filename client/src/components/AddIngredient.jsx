@@ -44,7 +44,6 @@ class AddIngredient extends Component {
     api
       .addIngredient(data)
       .then(result => {
-        console.log('SUCCESS!?');
         this.props.getIngredients();
       })
       .catch(err => this.setState({ message: err.toString() }));
@@ -66,12 +65,10 @@ class AddIngredient extends Component {
   };
 
   render() {
-    console.log(presetIngredients);
     return (
       <div className="Add-Ingredient">
         <h2>Add Ingredient</h2>
         <form className="form flex">
-          {/* <div> */}
           <div className="form-inputs">
             Name:
             <input

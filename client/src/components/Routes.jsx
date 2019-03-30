@@ -28,7 +28,7 @@ class Routes extends Component {
           path="/login"
           render={props => <Login {...props} setUser={this.props.setUser} />}
         />
-        <Route exact path="/recipes/" component={Recipes} />
+        <Route exact path="/recipes" component={Recipes} />
 
         <Route render={() => <h2>404</h2>} />
       </Switch>

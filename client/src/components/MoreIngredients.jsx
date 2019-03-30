@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Ingredients from './Ingredients';
 
 class MoreIngredients extends Component {
-  // state = {
-  //   ingredientsToSearch: lastIngredients
-  // };
-
   filterSearchedIngredients = searchedIngredients => {
     let allIngredients = this.props.ingredients;
     let filteredIngredients = allIngredients.filter(
       ingredient => !searchedIngredients.includes(ingredient.name)
     );
-    console.log('all: ', allIngredients, '  filt:  ', filteredIngredients);
     return filteredIngredients;
   };
 
   render() {
-    console.log(this.props);
     let filteredIngredients = this.filterSearchedIngredients(
       this.props.lastSearch
     );
-    // let lastIngredients = this.props.match.params.ingredient.split('+');
     return (
       <div className="MoreIngredientsRecipesContainer">
         <div className="flex">
@@ -36,7 +27,7 @@ class MoreIngredients extends Component {
                         this.props.addSearchIngredientHandler(oneIngredient);
                       }}
                     >
-                      <img src={oneIngredient.image} />
+                      <img src={oneIngredient.image} alt={oneIngredient.name} />
                     </div>
                   </div>
                 </div>
@@ -46,12 +37,11 @@ class MoreIngredients extends Component {
         </div>
         <div className="last-search-row flex">
           {this.props.lastSearchObject.map((oneSearch, index) => {
-            console.log('check', oneSearch);
             return (
               <div className="last-search magnet" key={index}>
                 <div className="ingredient-image-container flex">
                   <div className="ingredient-image flex">
-                    <img src={oneSearch.image} />
+                    <img src={oneSearch.image} alt={oneSearch.name} />
                     <span
                       onClick={() => {
                         this.props.deleteSearchIngredientHandler(oneSearch);
@@ -65,7 +55,6 @@ class MoreIngredients extends Component {
             );
           })}
         </div>
-        {/* {console.log('more ingredients', this.props)} */}
       </div>
     );
   }
